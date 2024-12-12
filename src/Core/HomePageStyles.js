@@ -174,63 +174,60 @@ export const SectionTitle = styled.h2`
 
 export const MovieGridContainer = styled.div`
   width: 100%;
-  overflow-x: auto; // Enable horizontal scrolling
   display: flex;
-  flex-direction: row;
+  overflow-x: auto;
   gap: 20px;
   padding: 10px 0;
-  
-  // Custom scrollbar for desktop
-  &::-webkit-scrollbar {
-    height: 8px; // Height of the scrollbar
-    width: 8px; // Width of the scrollbar
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1; // Track color
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background: #888; // Scrollbar color
-    border-radius: 4px; // Rounded corners
-  }
-  
-  &::-webkit-scrollbar-thumb:hover {
-    background: #555; // Darker color on hover
-  }
-  
-  // Enable smooth scrolling
+  max-width: 100%;
   scroll-behavior: smooth;
-  
-  // Allow mouse wheel and trackpad horizontal scrolling
-  overflow-y: hidden;
-  overflow-x: auto;
-  
-  // Prevent text selection during scroll
-  user-select: none;
-  
-  // Ensure touch scrolling on mobile
-  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Adjust gap and padding for smaller screens */
+  @media (max-width: 1024px) {
+    gap: 15px;
+    padding: 10px 15px;
+  }
+
+  @media (max-width: 767px) {
+    gap: 10px;
+    padding: 5px 10px;
+  }
 `;
+
 
 export const MovieItem = styled.div`
   flex: 0 0 auto;
   width: 200px;
   min-width: 200px;
+  max-width: 200px;
   height: 300px;
-  
-  // Existing styles remain the same
-  position: relative;
   background-color: #1a1a1a;
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   aspect-ratio: 2 / 3;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  
-  // Optional: improve scrolling experience on desktop
   cursor: grab;
-  
+  position: relative;
+
   &:active {
     cursor: grabbing;
   }
@@ -241,6 +238,22 @@ export const MovieItem = styled.div`
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
       z-index: 10;
     }
+  }
+
+  /* Reduce size for medium screens */
+  @media (max-width: 1024px) {
+    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
+    height: 240px;
+  }
+
+  /* Reduce size further for small screens */
+  @media (max-width: 767px) {
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+    height: 180px;
   }
 `;
 
